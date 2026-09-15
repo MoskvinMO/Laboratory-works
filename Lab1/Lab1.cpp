@@ -13,7 +13,7 @@ int main() {
     int k;
     cout << "Write k: ";
     cin >> k;
-    long double c = 1, epsilon=1, expx=0;
+    long double c = 1, epsilon = 1, expx = 0;
     // c is a term of the series which we sum;
     // expx is e^x which we compute
     long long m = 1;
