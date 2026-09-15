@@ -61,6 +61,6 @@ void TestExpx() {
             mx = x;
         };
     }
-    cout << d << '\x20' << mx;
+    cout << d << ' ' << mx;
     return;
 }
