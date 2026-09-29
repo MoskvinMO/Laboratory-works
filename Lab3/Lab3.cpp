@@ -35,7 +35,7 @@ int main() {
         << "Write any dimension of our square matrix again: ";
         int nTryAgain;
         cin >> nTryAgain;
-        if(nTryAgain == n || nTryAgain > 0 && nTryAgain < 11) {n = nTryAgain; break;}
+        if(nTryAgain == n || (nTryAgain > 0 && nTryAgain < 11)) {n = nTryAgain; break;}
     }
 
     // input
@@ -56,7 +56,7 @@ int main() {
     // output
     cout << "\nMatrix is:\n";
     for(int i = 0; i < n; ++i) {
-        for(int j = 0; j < n - 1; ++j) cout << setw(maxIntSize) << M(i, j, m) << '\x20';
+        for(int j = 0; j < n - 1; ++j) cout << setw(maxIntSize) << M(i, j, m) << ' ';
         cout << setw(maxIntSize) << M(i, n - 1, m) << '\n';
     }
 
@@ -65,7 +65,7 @@ int main() {
     bool IsNonPositiveColumnExist{};
     for(int j = 0; j < n; ++j) {
         for(int i = 0; i < n; ++i) if(M(i, j, m) > 0) goto EXIT; // if column contain a positive element, stop scanning this column
-        IsNonPositiveColumnExist=1; // if we are here, than we have found a column without positive elements
+        IsNonPositiveColumnExist = 1; // if we are here, than we have found a column without positive elements
         for(int i = 0; i < n; ++i) mxn = max(mxn, M(i, j, m));
         EXIT:;
     }
@@ -84,7 +84,7 @@ int main() {
         for(int j = max(0, i - n + 1); j < min(i + 1, n); ++j) { // cycle on elements of diagonal number i + 1
             temptSum+=M(j, i - j, m);
         }
-        if(!i || temptSum * winner.number < winner.sum * min(i + 1, 2 * n - 1 - i)) {winner.number=min(i + 1, 2 * n - 1 - i); winner.sum=temptSum;}
+        if(!i || temptSum * winner.number < winner.sum * min(i + 1, 2 * n - 1 - i)) {winner.number = min(i + 1, 2 * n - 1 - i); winner.sum = temptSum;}
         // If our diagonal has average less than winner, change winner.
         // !i is here because we need to put a real diagonal as winner.
         // There won't be overflow because of n <= 10.
@@ -94,11 +94,3 @@ int main() {
     << ((long double)winner.sum) / winner.number << ".\n\n";
     return 0;
 }
-/*
-Example input: (was used in debugging)
-4
-1
--2 3
--4 -5 -7
--8 -33 -11 -3
-*/
