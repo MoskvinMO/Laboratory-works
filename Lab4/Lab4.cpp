@@ -63,7 +63,7 @@ int main() {
         c = cin.get();
         str[++i] = c;
     } while(c != '\n');
-    str[i] = '\x20'; str[i + 1] = 0;
+    str[i] = ' '; str[i + 1] = 0;
     // the last space is useful for word finding
 
     vector<bool> chars(128, 0); // chars[i] == 1 iff there is i-th ASCII symbol in the word we consider
@@ -75,7 +75,7 @@ int main() {
     bool isWordExist{}; // 1 iff there is a word in str
 
     for(i = 0; *(str + i) != 0; ++i) {
-        chars[*(str + i)]=1;
+        chars[*(str + i)] = 1;
         if(*(str + i) == 32 && i != spaceBefore + 1) { // we found a non-empty word between spaceBefore-th and i-th symbols of str
             isWordExist = 1;
             for(int j = 0; j < 128; ++j) {sum += chars[j]; chars[j] = 0;} // computing the sum
