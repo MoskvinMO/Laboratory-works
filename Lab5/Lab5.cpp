@@ -84,16 +84,17 @@ int main() {
     return 0;
 }
 
-void FileSort(string fileName) {
+void FileSort(string fileName) { // sorting rows in file named fileName
+    // We move file rows to the vector fileRows, sort this vector and move back.
     vector<string> fileRows{};
     ifstream file(fileName, ios::app);
     string row;
-    while(getline(file, row)) {
+    while(getline(file, row)) { // moving rows to vector
         fileRows.push_back(row);
     }
-    sort(fileRows.begin(), fileRows.end());
+    sort(fileRows.begin(), fileRows.end()); // sorting a vector
     file.close();
     ofstream fileAgain(fileName);
-    for(auto sortedRow : fileRows) fileAgain << sortedRow << '\n';
+    for(auto sortedRow : fileRows) fileAgain << sortedRow << '\n'; // moving back
     file.close();
 }
