@@ -33,48 +33,23 @@ int main() {
     getline(cin, file2);
     FileSort(file2);
 
-    // Mode of opening choosing:
-    cout << "Do you want to destroy all data in files or keep them?\nPress 0+Enter for destoying the 1st, 1+Enter for keeping the 1st: ";
-    bool file1Fate;
-    cin >> file1Fate;
-    cout << "Press 0+Enter for destoying the 2nd, 1+Enter for keeping the 2nd: ";
-    bool file2Fate;
-    cin >> file2Fate;
-
     // Viewing:
     cout << "Do you want to view files? Input 1 for viewing the 1st, 2 for viewing the 2nd, something else for continuation: ";
     string view;
-    getline(cin, view); // getline that make everything OK after "cin >> file2Fate"
-    getline(cin, view); // getline that really get a string view
+    getline(cin, view);
     cout << '\n';
     string fileString{};
     while(1) {
-        // view show which file we want to open;
-        // format of opening depends on file's fate.
-        // 4 options that lead to viewing.
-        if(view == "1" && file1Fate) {
+        // view shows which file we want to open.
+        if(view == "1") {
             ifstream in(file1, ios::app);
             while(getline(in, fileString)) {
                 cout << fileString << '\n';
             }
             in.close();
         }
-        else if(view == "1" && !file1Fate) {
-            ifstream in(file1);
-            while(getline(in, fileString)) {
-                cout << fileString << '\n';
-            }
-            in.close();
-        }
-        else if(view == "2" && file2Fate) {
+        else if(view == "2") {
             ifstream in(file2, ios::app);
-            while(getline(in, fileString)) {
-                cout << fileString << '\n';
-            }
-            in.close();
-        }
-        else if(view == "2" && !file2Fate) {
-            ifstream in(file2);
             while(getline(in, fileString)) {
                 cout << fileString << '\n';
             }
@@ -90,30 +65,21 @@ int main() {
     cout << "Now we will merge these 2 files into the 3rd.\nHow the third file should be named?\n";
     string file3;
     cin >> file3;
-    ofstream out(file3);
-    string row;
-    if(file1Fate) {
-        ifstream in(file1, ios::app);
-        while(getline(in, row)) out << row << '\n';
-    }
-    else {
-        ifstream in(file1);
-        while(getline(in, row)) out << row << '\n';
-    }
-    if(file2Fate) {
-        ifstream in(file2, ios::app);
-        while(getline(in, row)) out << row << '\n';
-    }
-    else {
-        ifstream in(file2);
-        while(getline(in, row)) out << row << '\n';
-    }
+    ofstream out(file3); // out is opened file3
+    string row; // we will move file1 and file2 to file3 by rows
+    ifstream in1(file1, ios::app); // in2 is opened file1
+    while(getline(in1, row)) out << row << '\n'; // moving file1 to file3
+    in1.close();
+    ifstream in2(file2, ios::app); // in2 is opened file1
+    while(getline(in2, row)) out << row << '\n'; // moving file2 to file3
+    in2.close();
     out.close();
-    FileSort(file3);
+    FileSort(file3); // sorting the file3
+    // Output of file3:
     cout << "We have done the task. The third file's strings are:\n\n";
-    ifstream in(file3, ios::app);
-    while(getline(in, row)) cout << row << '\n';
-    in.close();
+    ifstream in3(file3, ios::app); // in3 is opened file3
+    while(getline(in3, row)) cout << row << '\n';
+    in3.close();
     cout << '\n';
     return 0;
 }
