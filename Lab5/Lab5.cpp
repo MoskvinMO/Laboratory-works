@@ -5,7 +5,7 @@ a
 n ab
 klm
 }
-will give us file {
+will give us a file {
 a
 klm
 n ab
