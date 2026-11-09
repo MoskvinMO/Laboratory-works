@@ -1,5 +1,5 @@
 #include <iostream>
-#include "fraction.hpp"
+#include "fraction.h"   
 
 int main()
 {
@@ -22,7 +22,7 @@ int main()
 
     // Showing our methods:
     // output of fractions:
-    std::cout << "You have written 2 fractions.\nThe first one:  "; frac1.out();
+    std::cout << "\nYou have written 2 fractions.\nThe first one:  "; frac1.out();
     std::cout << ";\nthe second one: "; frac2.out();
     // output of numerators and denominators:
     std::cout << ".\nNumerator of the first is " << frac1.getNumerator() << ";\nnumerator of the second is " << frac2.getNumerator() <<
