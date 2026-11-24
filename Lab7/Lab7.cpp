@@ -30,9 +30,12 @@ int main() {
     g.setMark2(21,1);
     cout << "The first mark of g in the 2nd session is " << g.getMark2(1) << ".\n";
     cout<<"Information about a, b, f, g:\n";
-    cout<<a<<".\n"<<b<<".\n"<<f<<".\n"<<g<<".\n\n";
+    cout<<a<<".\n"<<b<<".\n"<<f<<".\n"<<g<<".\n";
+    cout<<"Average mark of f is "<<d.averageGrade()<<".\n";
+    cout<<"Average mark of g is "<<g.averageGrade()<<".\n\n";
     return 0;
 }
+
 
 ostream& operator<<(ostream& out, const Student& student){
     out << student.getId() << ": student " << student.getName() << ", course " << student.getCourse()

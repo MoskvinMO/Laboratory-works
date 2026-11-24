@@ -1,7 +1,11 @@
+/*
+    This is definition of classes Student, StudentAfterTheFirstSession and StudentAfterTheSecondSession.
+    Warning: overloading of operator << is not here. It is in "Lab7.cpp".
+*/
+
 #ifndef STUDENTS_H
 #define STUDENTS_H
 
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -55,7 +59,10 @@ public:
     // Numeration starts from 1 here!
     short getMark1(short number) const;
     void setMark1(short value, signed char number);
-private:
+
+    // Average mark:
+    virtual float averageGrade() const;
+protected:
     short m_marks1[4];
 };
 
@@ -74,7 +81,10 @@ class StudentAfterTheSecondSession: public StudentAfterTheFirstSession {
 
     // Setter
     void setMark2(short value, signed char number);
-private:
+    
+    // Average mark:
+    float averageGrade() const override;
+protected:
     short m_marks2[5];
 };
 

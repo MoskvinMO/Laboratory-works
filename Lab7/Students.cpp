@@ -1,6 +1,6 @@
 /*
     This is realisation of classes Student, StudentAfterTheFirstSession and StudentAfterTheSecondSession.
-    Warning: overloading of operator << is not here. It is in Lab7.cpp.
+    Warning: overloading of operator << is not here. It is in "Lab7.cpp".
 */
 
 #include <iostream>
@@ -110,6 +110,13 @@ void StudentAfterTheFirstSession::setMark1(short value, signed char number) {
     m_marks1[number - 1] = value;
 }
 
+// Average mark counting:
+float StudentAfterTheFirstSession::averageGrade() const{
+    float sum{};
+    for(signed char i = 0; i < 4; ++i) sum += m_marks1[i];
+    return sum / 4;
+}
+
 
     // Class StudentAfterTheSecondSession.
 
@@ -138,4 +145,12 @@ short StudentAfterTheSecondSession::getMark2(short number) const {
 void StudentAfterTheSecondSession::setMark2(short value, signed char number) {
     if(number < 1 || number > 5) return; // may be throw will be better here
     m_marks2[number - 1] = value;
+}
+
+// Average mark counting:
+float StudentAfterTheSecondSession::averageGrade() const{
+    float sum{};
+    for(signed char i = 0; i < 4; ++i) sum += m_marks1[i];
+    for(signed char i = 0; i < 5; ++i) sum += m_marks2[i];
+    return sum / 9;
 }
