@@ -41,54 +41,56 @@ int main() {
     cout << "How many sessions are there? ";
     int sessions;
     cin >> sessions;
-    if(sessions>2||sessions<1){
+    if(sessions > 2 || sessions < 1) {
         cout << "FATAL ERROR: unavailable amount of sessions.";
         terminate();
     }
 
-    if(sessions == 1){
+    if(sessions == 1) {
     short arr[4];
     char* name = new char[1];
-    name[1]='\0';
+    name[1] = '\0';
     StudentAfterTheFirstSession tmp{name,0,0,"0",arr};
     long double avg{};
-    for(int i=0; i<n; i++){
-        for(int j=1; j<5; j++){
-            cout<<"Student number "<<i+1<<", mark number "<<j<<": ";
+    for(int i = 0; i < n; i++) {
+        for(int j=1; j<5; j++) {
+            cout << "Student number " << i + 1 << ", mark number " << j << ": ";
             short mark;
-            cin>>mark;
+            cin >> mark;
             tmp.setMark1(mark, j);
         }
         avg += tmp.averageGrade();
     }
     avg /= n;
     cout<<"\nAverage grade of the group is "<<avg<<".\n\n";
+    delete[] name;
     }
 
     if(sessions == 2){
     short arr1[4];
     short arr2[5];
     char* name = new char[1];
-    name[1]='\0';
+    name[1] = '\0';
     StudentAfterTheSecondSession tmp{name,0,0,"0",arr1,arr2};
     long double avg{};
-    for(int i=0; i<n; i++){
-        for(int j=1; j<5; j++){
-            cout<<"Student number "<<i+1<<", mark number "<<j<<" in the 1st session: ";
+    for(int i = 0; i < n; i++) {
+        for(int j = 1; j < 5; j++) {
+            cout << "Student number " << i + 1 << ", mark number " << j << " in the 1st session: ";
             short mark;
-            cin>>mark;
+            cin >> mark;
             tmp.setMark1(mark, j);
         }
-        for(int j=1; j<6; j++){
-            cout<<"Student number "<<i+1<<", mark number "<<j<<" in the 2nd session: ";
+        for(int j = 1; j < 6; j++){
+            cout << "Student number " << i + 1 << ", mark number " << j << " in the 2nd session: ";
             short mark;
-            cin>>mark;
+            cin >> mark;
             tmp.setMark2(mark, j);
         }
         avg += tmp.averageGrade();
     }
     avg /= n;
     cout<<"\nAverage grade of the group is "<<avg<<".\n\n";
+    delete[] name;
     }
     return 0;
 }
